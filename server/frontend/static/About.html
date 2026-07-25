@@ -1,10 +1,17 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <!-- Link the style sheet here -->
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Best Cars Dealership</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/style.css">
 </head>
-<div>
+<body class="bg-light">
+
+  <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
     <div class="container-fluid">
       <h2 style="padding-right: 5%;">Dealerships</h2>
@@ -26,47 +33,81 @@
       </div>
     </div>
   </nav>
-  
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-      <div class="banner" name="about-header">
-      <!-- Insert header information here -->
-        <h1>About Us</h1>
-        Welcome to Best Cars dealership, home to the best cars in North America. We deal in selling domestic and imported cars at reasonable prices.
-      </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person1</p>
-          <p>Person1 Title</p>
-          <p class="card-text">Some text that explains the person1 in about 2 short sentences</p>
-          <p>person1@example.com</p>
+
+  <!-- Hero / Header Section -->
+  <div class="bg-white border-bottom py-5 mb-5 shadow-sm">
+    <div class="container text-center" style="max-width: 800px;">
+      <h1 class="display-4 fw-bold mb-3">About Best Cars</h1>
+      <p class="lead text-muted fs-5">
+        Founded in 2010, Best Cars has grown into one of North America's most trusted automotive networks. We specialize in bringing you top-tier domestic vehicles and reliable imports, offering complete transparency, competitive pricing, and exceptional customer care every step of the way.
+      </p>
+    </div>
+  </div>
+
+  <!-- Leadership Team Section -->
+  <div class="container my-5">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Meet Our Leadership Team</h2>
+      <p class="text-muted">The dedicated professionals driving our commitment to quality and service.</p>
+    </div>
+
+    <!-- Team Cards Grid -->
+    <div class="row g-4 justify-content-center">
+      
+      <!-- Person 1 -->
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img class="card-img-top rounded-circle mx-auto mt-3" src="/static/person.png" alt="Marcus Vance" style="width: 140px; height: 140px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold mb-1">Marcus Vance</h5>
+            <p class="text-primary fw-semibold mb-3">Founder & General Manager</p>
+            <p class="card-text text-muted small">
+              Marcus has over 20 years of automotive industry experience. He leads company operations with a customer-first philosophy.
+            </p>
+            <a href="mailto:marcus.vance@bestcars.com" class="text-decoration-none small text-secondary">
+              marcus.vance@bestcars.com
+            </a>
+          </div>
         </div>
       </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person2</p>
-          <p>Person2 Title</p>
-          <p class="card-text">Some text that explains the person2 in about 2 short sentences</p>
-          <p>person2@example.com</p>
+      <!-- Person 2 -->
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img class="card-img-top rounded-circle mx-auto mt-3" src="/static/person.png" alt="Sarah Chen" style="width: 140px; height: 140px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold mb-1">Sarah Chen</h5>
+            <p class="text-primary fw-semibold mb-3">Head of Sales & Inventory</p>
+            <p class="card-text text-muted small">
+              Sarah oversees our nationwide inventory sourcing, ensuring every certified pre-owned car meets our strict safety standards.
+            </p>
+            <a href="mailto:sarah.chen@bestcars.com" class="text-decoration-none small text-secondary">
+              sarah.chen@bestcars.com
+            </a>
+          </div>
         </div>
       </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person3</p>
-          <p>Person3 Title</p>
-          <p class="card-text">Some text that explains the person3 in about 2 short sentences</p>
-          <p>person3@example.com</p>
+      <!-- Person 3 -->
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-3">
+          <img class="card-img-top rounded-circle mx-auto mt-3" src="/static/person.png" alt="David Rodriguez" style="width: 140px; height: 140px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title fw-bold mb-1">David Rodriguez</h5>
+            <p class="text-primary fw-semibold mb-3">Director of Customer Service</p>
+            <p class="card-text text-muted small">
+              David manages our support team to guarantee every buyer receives transparent financing options and reliable post-sale help.
+            </p>
+            <a href="mailto:david.rodriguez@bestcars.com" class="text-decoration-none small text-secondary">
+              david.rodriguez@bestcars.com
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-    </div>
-    </div>
-    
-</div>
 
+    </div>
+  </div>
+
+  <script src="/static/bootstrap.bundle.min.js"></script>
+</body>
 </html>
