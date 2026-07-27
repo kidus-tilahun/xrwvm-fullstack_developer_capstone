@@ -24,32 +24,28 @@ const Dealer = () => {
   let reviews_url = root_url+`djangoapp/reviews/dealer/${id}`;
   let post_review = root_url+`postreview/${id}`;
   
-  const get_dealer = async ()=>{
-    const res = await fetch(dealer_url, {
-      method: "GET"
-    });
-    const retobj = await res.json();
-    
-    if(retobj.status === 200) {
-      let dealerobjs = Array.from(retobj.dealer)
-      setDealer(dealerobjs[0])
-    }
+  const get_dealer = async () => {
+  const res = await fetch(`/djangoapp/dealer/${id}`);
+  const retobj = await res.json();
+  if (retobj.status === 200) {
+    // Some templates use retobj.dealer, others use retobj.dealer[0]
+    let dealerData = Array.isArray(retobj.dealer) ? retobj.dealer[0] : retobj.dealer;
+    setDealer(dealerData);
   }
+};
 
-  const get_reviews = async ()=>{
-    const res = await fetch(reviews_url, {
-      method: "GET"
-    });
-    const retobj = await res.json();
-    
-    if(retobj.status === 200) {
-      if(retobj.reviews.length > 0){
-        setReviews(retobj.reviews)
-      } else {
-        setUnreviewed(true);
-      }
+// 2. Fetch Dealer Reviews
+const get_reviews = async () => {
+  const res = await fetch(`/djangoapp/reviews/dealer/${id}`);
+  const retobj = await res.json();
+  if (retobj.status === 200) {
+    if (retobj.reviews.length > 0) {
+      setReviews(retobj.reviews);
+    } else {
+      setUnreviewed(true);
     }
   }
+};
 
   const senti_icon = (sentiment)=>{
     let icon = sentiment === "positive"?positive_icon:sentiment==="negative"?negative_icon:neutral_icon;
@@ -65,7 +61,9 @@ const Dealer = () => {
       
     }
   },[]);  
-
+  if (!dealer || Object.keys(dealer).length === 0) {
+    return <div style={{ padding: "20px" }}>Loading dealer details...</div>;
+  }
 
 return(
   <div style={{margin:"20px"}}>

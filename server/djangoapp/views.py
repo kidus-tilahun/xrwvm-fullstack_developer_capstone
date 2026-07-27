@@ -81,20 +81,38 @@ def get_dealer_details(request, dealer_id):
     if dealer_id:
         endpoint = "/fetchDealer/" + str(dealer_id)
         dealership = get_request(endpoint)
+        
+        # If Mongo/Express returned a list, grab the first item
+        if isinstance(dealership, list) and len(dealership) > 0:
+            dealership = dealership[0]
+            
         return JsonResponse({"status": 200, "dealer": dealership})
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
 
 # Get dealer reviews and analyze their sentiments
+# Get dealer reviews and analyze their sentiments
 def get_dealer_reviews(request, dealer_id):
     if dealer_id:
         endpoint = "/fetchReviews/dealer/" + str(dealer_id)
         reviews = get_request(endpoint)
-        for review_detail in reviews:
-            response = analyze_review_sentiments(review_detail['review'])
-            print(response)
-            review_detail['sentiment'] = response['sentiment']
-        return JsonResponse({"status": 200, "reviews": reviews})
+        
+        # Ensure reviews is a list before iterating
+        if isinstance(reviews, list):
+            for review_detail in reviews:
+                try:
+                    response = analyze_review_sentiments(review_detail.get('review', ''))
+                    if response and 'sentiment' in response:
+                        review_detail['sentiment'] = response['sentiment']
+                    else:
+                        review_detail['sentiment'] = "neutral"
+                except Exception as e:
+                    logger.error(f"Sentiment analysis failed: {e}")
+                    review_detail['sentiment'] = "neutral"
+                    
+            return JsonResponse({"status": 200, "reviews": reviews})
+        else:
+            return JsonResponse({"status": 200, "reviews": []})
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
 
